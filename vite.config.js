@@ -18,7 +18,8 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+      '/images': 'src/assets/images/'
     },
     extensions: ['.js', '.ts', '.jsx', '.tsx', '.json', '.vue'],
   },
@@ -50,10 +51,10 @@ export default defineConfig({
         assetFileNames: '[ext]/[name]-[hash].[ext]',
         // 第三方库拆包
         manualChunks: {
-          xgplayer: ['xgplayer'],
-          echarts: ['echarts'],
-          tinymce: ['tinymce'],
-          elicons: ['elicons']
+          // xgplayer: ['xgplayer'],
+          // echarts: ['echarts'],
+          // tinymce: ['tinymce'],
+          // elicons: ['elicons']
         },
       },
     }
