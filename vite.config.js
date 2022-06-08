@@ -1,3 +1,10 @@
+/*
+ * @Description: vite配置
+ * @Author: xjc
+ * @Date: 2022-06-08 09:31:28
+ * @LastEditTime: 2022-06-08 10:55:57
+ * @LastEditors: xjc
+ */
 import {fileURLToPath, URL} from 'url'
 import {defineConfig} from 'vite'
 import vue from '@vitejs/plugin-vue'
@@ -22,6 +29,16 @@ export default defineConfig({
       '/images': 'src/assets/images/'
     },
     extensions: ['.js', '.ts', '.jsx', '.tsx', '.json', '.vue'],
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `
+          @import '@/assets/styles/var.scss';
+          @import '@/assets/styles/mixin.scss';
+        `
+      }
+    }
   },
   server: {
     proxy: {

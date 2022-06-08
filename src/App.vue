@@ -27,7 +27,7 @@ console.log(userStore)
   <RouterView />
 </template>
 
-<style>
+<style lang="scss">
 @import '@/assets/base.css';
 
 #app {
@@ -36,6 +36,8 @@ console.log(userStore)
   padding: 2rem;
 
   font-weight: normal;
+  @include border();
+  color: $primary-color;
 }
 
 header {
