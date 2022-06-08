@@ -2,11 +2,12 @@
  * @Description: vite配置
  * @Author: xjc
  * @Date: 2022-06-08 09:31:28
- * @LastEditTime: 2022-06-08 11:30:50
+ * @LastEditTime: 2022-06-08 14:31:04
  * @LastEditors: xjc
  */
 import {fileURLToPath, URL} from 'url'
 import {defineConfig} from 'vite'
+import path from 'path'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import {visualizer} from 'rollup-plugin-visualizer'
@@ -94,14 +95,29 @@ export default defineConfig({
         chunkFileNames: 'js/[name]-[hash].js',
         entryFileNames: 'js/[name]-[hash].js',
         assetFileNames: '[ext]/[name]-[hash].[ext]',
-        // 第三方库拆包
-        manualChunks: {
-          // xgplayer: ['xgplayer'],
-          // echarts: ['echarts'],
-          // tinymce: ['tinymce'],
-          // elicons: ['elicons']
+        // 最小化拆分包
+        manualChunks: id => {
+          
+          if (id.includes('node_modules')) {
+            return id.toString().split('node_modules/')[1].split('/')[0].toString()
+          }
+          // 将pinia的全局库实例打包进vendor，避免和页面一起打包造成资源重复引入
+          // eslint-disable-next-line no-undef
+          if (id.includes(path.resolve(__dirname, '/src/store/index.js'))) {
+            return 'vendor'
+          } else if (id.includes('node_modules/element-plus')) {
+            return 'element-plus'
+          }
         },
+        // 第三方库拆包
+        // manualChunks: {
+        //   // xgplayer: ['xgplayer'],
+        //   // echarts: ['echarts'],
+        //   // tinymce: ['tinymce'],
+        //   // elicons: ['elicons']
+        // },
       },
+      minify: 'esbuild'
     }
   }
 })
