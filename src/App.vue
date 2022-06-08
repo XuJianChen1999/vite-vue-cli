@@ -1,8 +1,13 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
+import {RouterLink, RouterView} from 'vue-router'
 import HelloWorld from '@/components/HelloWorld.vue'
+import useUserStore from '@/store/user'
+
+const userStore = useUserStore()
 
 console.log(import.meta.env)
+
+console.log(userStore)
 </script>
 
 <template>
