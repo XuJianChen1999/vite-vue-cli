@@ -2,7 +2,7 @@
  * @Description: vite配置
  * @Author: xjc
  * @Date: 2022-06-08 09:31:28
- * @LastEditTime: 2022-06-08 10:55:57
+ * @LastEditTime: 2022-06-08 11:30:50
  * @LastEditors: xjc
  */
 import {fileURLToPath, URL} from 'url'
@@ -22,6 +22,34 @@ export default defineConfig({
       gzipSize: true,
       brotliSize: true,
     })
+    // 文件压缩
+    // viteCompression()
+    // 图片压缩
+    // viteImagemin({
+    //   gifsicle: {
+    //     optimizationLevel: 7,
+    //     interlaced: false
+    //   },
+    //   optipng: {
+    //     optimizationLevel: 7
+    //   },
+    //   mozjpeg: {
+    //     quality: 20
+    //   },
+    //   pngquant: {
+    //     quality: [0.8, 0.9],
+    //     speed: 4
+    //   },
+    //   svgo: {
+    //     plugins: [
+    //       {name: 'removeViewBox'},
+    //       {
+    //         name: 'removeEmptyAttrs',
+    //         active: false
+    //       }
+    //     ]
+    //   }
+    // })
   ],
   resolve: {
     alias: {
